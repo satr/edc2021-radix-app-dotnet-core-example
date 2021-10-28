@@ -47,6 +47,8 @@ namespace radix_app_dotnet_core_example
             {
                 endpoints.MapRazorPages();
             });
+
+            // app.UseUrls("http://0.0.0.0:8000/");
         }
     }
 }

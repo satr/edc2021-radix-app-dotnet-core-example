@@ -18,4 +18,4 @@ RUN  addgroup --gid 1000  non-root && \
 RUN chown -R non-root:non-root .
 USER 1000
 EXPOSE 8000
-#ENTRYPOINT ["dotnet", "radix-app-dotnet-core-example.dll"]
+ENTRYPOINT ["dotnet", "radix-app-dotnet-core-example.dll"]
