@@ -9,6 +9,7 @@ spec:
         from: main
   components:
     - name: app
+      src: ./app
       ports:
         - name: http
           port: 8000
