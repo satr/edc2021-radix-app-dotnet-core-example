@@ -28,7 +28,7 @@ using Prometheus;
                 endpoints.MapMetrics();
             });
 ```
-* Add a request counter custom metric `custom_request_counter`, incremented on each load of the `Index` page of the `HomeController`
+* Add a request counter custom metric `custom_request_count`, incremented on each load of the `Index` page of the `HomeController`
 ```c#
 //...
 using Prometheus;
@@ -40,7 +40,7 @@ using Prometheus;
         public HomeController(ILogger<HomeController> logger)
         {
             //...
-            _requestCounter = Metrics.CreateCounter("custom_request_counter", "Custom request counter");
+            _requestCounter = Metrics.CreateCounter("custom_request_count", "Custom request counter");
         }
 
         public IActionResult Index()
@@ -51,8 +51,8 @@ using Prometheus;
 ```
 
 ### Verify metrics
-* Run the application locally and open in a browser a link [http://localhost:8000/metrics](http://localhost:8000/metrics) - it returns the custom metric `custom_request_counter` among standard metrics.
-* Reload few times the index page [http://localhost:8000/](http://localhost:8000/) - this increments a value of the `custom_request_counter`.
+* Run the application locally and open in a browser a link [http://localhost:8000/metrics](http://localhost:8000/metrics) - it returns the custom metric `custom_request_count` among standard metrics.
+* Reload few times the index page [http://localhost:8000/](http://localhost:8000/) - this increments a value of the `custom_request_count`.
 
 ### Run the application in the Docker container
 * Run `docker-compose up` (or `docker-compose up --build` to rebuild existing container layers).
