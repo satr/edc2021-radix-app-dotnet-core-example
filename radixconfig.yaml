@@ -20,8 +20,6 @@ spec:
     - name: build-secrets-example
       build:
         from: build-secrets
-    - name: deploy-only-example
-      #Do not specify "build"
   components:
     - name: app
       src: ./app
