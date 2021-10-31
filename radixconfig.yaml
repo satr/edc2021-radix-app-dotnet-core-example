@@ -7,6 +7,9 @@ spec:
     - name: dev
       build:
         from: main
+    - name: basic
+      build:
+        from: basic
     - name: custom-metrics
       build:
         from: custom-metrics
