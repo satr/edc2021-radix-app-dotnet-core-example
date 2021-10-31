@@ -1,0 +1,5 @@
+on:
+  # Set your workflow to run on push events to needed branches
+  push:
+    branches:
+      - deploy-only
