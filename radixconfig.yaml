@@ -20,5 +20,5 @@ spec:
       variables:
         ASPNETCORE_URLS: "http://+:8000"
       environmentConfig:
-        - environment: dev
+        - environment: custom-metrics
           monitoring: true
