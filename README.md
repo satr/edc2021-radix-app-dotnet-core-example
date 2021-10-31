@@ -3,7 +3,7 @@
 Install [Docker](https://docs.docker.com/get-docker/) and [dotnet core](https://docs.microsoft.com/en-us/dotnet/core/install/)
 
 ### Run the application locally
-* Run the application locally and open in a browser a link [http://localhost:8000/metrics](http://localhost:8000/metrics).
+* Run the application locally and open in a browser a link [http://localhost:8000](http://localhost:8000).
 
 ### Run the application in the Docker container
 * Run `docker-compose up` (or `docker-compose up --build` to rebuild existing container layers).
