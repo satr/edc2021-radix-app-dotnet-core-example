@@ -15,6 +15,7 @@ RUN dotnet publish -c release -o out --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 RUN apt update && apt upgrade -y
 WORKDIR /app
+RUN echo "test123">secret.txt
 #Copy built application to the runtime environment
 COPY --from=build-env /app/out .
 RUN  addgroup --gid 1000  non-root && \

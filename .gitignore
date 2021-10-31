@@ -2,3 +2,4 @@
 app/obj/
 app/bin/
 app/out/
+app/secret.txt
