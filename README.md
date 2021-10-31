@@ -2,6 +2,8 @@
 
 Install [Docker](https://docs.docker.com/get-docker/) and [dotnet core](https://docs.microsoft.com/en-us/dotnet/core/install/)
 
+## Add Prometheus metrics to the application  
+
 ### Prometheus client
 [.NET client](https://github.com/prometheus-net/prometheus-net)
 
