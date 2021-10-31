@@ -11,15 +11,18 @@ spec:
     - name: dev
       build:
         from: main
-    - name: basic
+    - name: basic-example
       build:
         from: basic
-    - name: custom-metrics
+    - name: custom-metrics-example
       build:
         from: custom-metrics
-    - name: build-secrets
+    - name: build-secrets-example
       build:
         from: build-secrets
+    - name: deploy-only-example
+      build:
+        from: deploy-only
   components:
     - name: app
       src: ./app
@@ -30,5 +33,5 @@ spec:
       variables:
         ASPNETCORE_URLS: "http://+:8000"
       environmentConfig:
-        - environment: custom-metrics
+        - environment: custom-metrics-example
           monitoring: true
