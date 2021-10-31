@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using app.Models;
-using Prometheus.Client;
+using Prometheus;
 
 namespace app.Controllers
 {
@@ -15,16 +11,16 @@ namespace app.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ICounter _requestCounter;
 
-        public HomeController(ILogger<HomeController> logger, IMetricFactory metricFactory)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _requestCounter = metricFactory.CreateCounter("custom_request_counter", "Custom request counter");
+            _requestCounter = Metrics.CreateCounter("custom_request_counter", "Custom request counter");
         }
 
         public IActionResult Index()
         {
             _requestCounter.Inc(1);
-            return View();
+            return View(_requestCounter.Value);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
