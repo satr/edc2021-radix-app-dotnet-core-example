@@ -1,6 +1,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
-
 RUN apt update && apt upgrade -y
+
+#Build secrets
+ARG SECRET_1
+ARG SECRET_2
 
 WORKDIR /app
 # Copy csproj and restore as distinct layers
@@ -14,8 +17,21 @@ RUN dotnet publish -c release -o out --no-restore
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 RUN apt update && apt upgrade -y
+
+#Build secrets
+ARG SECRET_1
+ARG SECRET_2
+
 WORKDIR /app
-RUN echo "test123">secret.txt
+
+#Save first build secret value to a file 
+RUN SECRET_1_VAL=$(echo $SECRET_1|base64 -d) && \
+    echo $SECRET_1_VAL>secret1.txt
+RUN echo $SECRET_1|base64 -d
+#Save second build secret value to a file 
+RUN echo $SECRET_2|base64 -d>secret2.txt
+RUN echo $SECRET_2|base64 -d
+
 #Copy built application to the runtime environment
 COPY --from=build-env /app/out .
 RUN  addgroup --gid 1000  non-root && \

@@ -1,6 +1,10 @@
 services:
   app:
-    build: ./app
+    build: 
+      context: ./app
+      args:
+        - SECRET_1=U29tZSBzZWNyZXQgQWNjb3VudCBJZCAiSm9obiBEb2UiCg== # Some secret Account Id "John Doe"
+        - SECRET_2=UGEyMDIyMjZ3MHJkIy49LXt9JipAKCk+Cg==             # Pa$$w0rd#.=-{}&*@()>
     ports:
       - "8000:8000"
     environment:

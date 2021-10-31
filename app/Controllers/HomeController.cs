@@ -22,18 +22,25 @@ namespace app.Controllers
         
         public IActionResult Secret()
         {
-            var file = new FileInfo("secret.txt");
+            var secret1 = ReadFromFile("secret1.txt");
+            var secret2 = ReadFromFile("secret2.txt");
+            return View("Secret", new BuildSecrets { Secret1 = secret1, Secret2 = secret2 });
+        }
+
+        private static string ReadFromFile(string fileName)
+        {
+            var file = new FileInfo(fileName);
             if (!file.Exists)
             {
-                return View("Secret", null);
+                return null;
             }
             using (var stream = file.OpenRead())
             using (var reader = new StreamReader(stream))
             {
-                return View("Secret", reader.ReadToEnd());
+                return reader.ReadToEnd();
             }
         }
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
