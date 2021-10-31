@@ -3,6 +3,10 @@ kind: RadixApplication
 metadata:
   name: edc2021-radix-app-dotnet-core-example
 spec:
+  build:
+    secrets:
+      - SECRET_1
+      - SECRET_2
   environments:
     - name: dev
       build:
@@ -13,6 +17,9 @@ spec:
     - name: custom-metrics
       build:
         from: custom-metrics
+    - name: build-secrets
+      build:
+        from: build-secrets
   components:
     - name: app
       src: ./app
