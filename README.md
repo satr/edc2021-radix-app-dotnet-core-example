@@ -2,15 +2,16 @@
 
 Install [Docker](https://docs.docker.com/get-docker/) and [dotnet core](https://docs.microsoft.com/en-us/dotnet/core/install/)
 
-## Prometheus metrics
+### Prometheus client
 [.NET client](https://github.com/prometheus-net/prometheus-net)
 
+### Add custom metrics to the application
+* Install Prometheus client packages
 ```
 Install-Package prometheus-net
 Install-Package prometheus-net.AspNetCore
 ```
-
-Publish `/metrics` endpoint in `Startup.cs`
+* Publish `/metrics` endpoint in `Startup.cs`
 ```c#
 //...
 using Prometheus;
@@ -25,8 +26,7 @@ using Prometheus;
                 endpoints.MapMetrics();
             });
 ```
-
-Add a request counter custom metric `custom_request_counter`, incremented on each load of the `Index` page of the `HomeController`
+* Add a request counter custom metric `custom_request_counter`, incremented on each load of the `Index` page of the `HomeController`
 ```c#
 //...
 using Prometheus;
@@ -47,7 +47,13 @@ using Prometheus;
             return View();
         }
 ```
-Verify that with locally started application endpoint `http://localhost:8000/metrics` returns the custom metric `custom_request_counter` among standard metrics. Every reload of the page `http://localhost:8000/` increments a value of the `custom_request_counter`.
 
-Run the application within the Docker
-`docker-compose up`
+### Verify metrics
+* Run the application locally and open in a browser a link [http://localhost:8000/metrics](http://localhost:8000/metrics) - it returns the custom metric `custom_request_counter` among standard metrics.
+* Reload few times the index page [http://localhost:8000/](http://localhost:8000/) - this increments a value of the `custom_request_counter`.
+
+### Run the application in the Docker container
+* Run `docker-compose up` (or `docker-compose up --build` to rebuild existing container layers).
+* Open in a browser a link [http://localhost:8000](http://localhost:8000/), reload the page ew times.
+* Open in a browser a link [http://localhost:8000/metrics](http://localhost:8000/metrics) to see published metrics.
+* Run `docker-compose down` to remove docker containers after its use.

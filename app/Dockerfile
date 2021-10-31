@@ -9,7 +9,7 @@ RUN dotnet restore
 
 ## Copy everything else and build
 COPY . .
-RUN dotnet publish -c release -o out
+RUN dotnet publish -c release -o out --no-restore
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0

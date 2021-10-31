@@ -20,7 +20,7 @@ namespace app.Controllers
         public IActionResult Index()
         {
             _requestCounter.Inc(1);
-            return View(_requestCounter.Value);
+            return View(_requestCounter.Value);//optionally: pass the counter value to the view to display it. Otherwise return View()
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

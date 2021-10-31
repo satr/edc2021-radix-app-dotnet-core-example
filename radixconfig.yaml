@@ -7,6 +7,9 @@ spec:
     - name: dev
       build:
         from: main
+    - name: custom-metrics
+      build:
+        from: custom-metrics
   components:
     - name: app
       src: ./app
@@ -14,6 +17,8 @@ spec:
         - name: http
           port: 8000
       publicPort: http
-      monitoring: true
       variables:
         ASPNETCORE_URLS: "http://+:8000"
+      environmentConfig:
+        - environment: dev
+          monitoring: true
