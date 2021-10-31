@@ -21,8 +21,7 @@ spec:
       build:
         from: build-secrets
     - name: deploy-only-example
-      build:
-        from: deploy-only
+      #Do not specify "build"
   components:
     - name: app
       src: ./app
