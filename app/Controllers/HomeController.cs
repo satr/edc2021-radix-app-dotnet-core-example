@@ -14,7 +14,7 @@ namespace app.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _requestCounter = Metrics.CreateCounter("custom_request_counter", "Custom request counter");
+            _requestCounter = Metrics.CreateCounter("custom_request_count", "Custom request counter");
         }
 
         public IActionResult Index()
