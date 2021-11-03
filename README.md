@@ -2,8 +2,9 @@
 
 Install [Docker](https://docs.docker.com/get-docker/) and [dotnet core](https://docs.microsoft.com/en-us/dotnet/core/install/)
 
-* [Basic application](https://github.com/satr/edc2021-radix-app-dotnet-core-example/tree/basic)
-* [Application with Prometheus custom metrics](https://github.com/satr/edc2021-radix-app-dotnet-core-example/tree/custom-metrics)
+* [Basic](https://github.com/satr/edc2021-radix-app-dotnet-core-example/tree/basic) application
+* Application [with Prometheus custom metrics](https://github.com/satr/edc2021-radix-app-dotnet-core-example/tree/custom-metrics)
+* Application [with build secrets](https://github.com/satr/edc2021-radix-app-dotnet-core-example/tree/build-secrets)
 
 ### Run the application locally
 * Run the application locally and open in a browser a link [http://localhost:8000](http://localhost:8000).
