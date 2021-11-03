@@ -14,9 +14,9 @@ spec:
     - name: basic-example
       build:
         from: basic
-    # - name: custom-metrics-example
-    #   build:
-    #     from: custom-metrics
+    - name: custom-metrics-example
+      build:
+        from: custom-metrics
     - name: build-secrets-example
       build:
         from: build-secrets
@@ -29,6 +29,6 @@ spec:
       publicPort: http
       variables:
         ASPNETCORE_URLS: "http://+:8000"
-      # environmentConfig:
-      #   - environment: custom-metrics-example
-      #     monitoring: true
+      environmentConfig:
+        - environment: custom-metrics-example
+          monitoring: true
