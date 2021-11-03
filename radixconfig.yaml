@@ -7,7 +7,7 @@ spec:
     - name: dev
       build:
         from: main
-    - name: custom-metrics-example
+    - name: custom-metrics-env
       build:
         from: custom-metrics
   components:
@@ -20,5 +20,5 @@ spec:
       variables:
         ASPNETCORE_URLS: "http://+:8000"
       environmentConfig:
-        - environment: custom-metrics-example
+        - environment: custom-metrics-env
           monitoring: true
